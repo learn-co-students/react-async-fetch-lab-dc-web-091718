@@ -9,17 +9,16 @@ class App extends React.Component{
   render(){
     return(
       <div>
-        {this.state.peopleInSpace.map((person, id)=> <h1 key={id}>{person.name}</h1>)}
+        {this.state.peopleInSpace.map((person, id) => <h1 key={id}>{person.name}</h1>)}
       </div>
     )
   }
 
-  componentDidMount(){
+  componentDidMount() {
     fetch('http://api.open-notify.org/astros.json')
-    .then(res=> res.json())
-    .then(people => this.setState({
-      peopleInSpace: people
-    }))
+      .then(response => response.json())
+      .then(({people}) => this.setState({ peopleInSpace: people }))
+
   }
 }
 
